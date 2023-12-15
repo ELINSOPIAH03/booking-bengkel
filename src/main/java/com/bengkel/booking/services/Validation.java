@@ -3,39 +3,59 @@ package com.bengkel.booking.services;
 import java.util.Scanner;
 
 public class Validation {
-	
+
 	public static String validasiInput(String question, String errorMessage, String regex) {
-	    Scanner input = new Scanner(System.in);
-	    String result;
-	    boolean isLooping = true;
-	    do {
-	      System.out.print(question);
-	      result = input.nextLine();
+		Scanner input = new Scanner(System.in);
+		String result;
+		boolean isLooping = true;
+		do {
+			System.out.print(question);
+			result = input.nextLine();
 
-	      //validasi menggunakan matches
-	      if (result.matches(regex)) {
-	        isLooping = false;
-	      }else {
-	        System.out.println(errorMessage);
-	      }
+			// validasi menggunakan matches
+			if (result.matches(regex)) {
+				isLooping = false;
+			} else {
+				System.out.println(errorMessage);
+			}
 
-	    } while (isLooping);
+		} while (isLooping);
 
-	    return result;
-	  }
-	
+		return result;
+	}
+
 	public static int validasiNumberWithRange(String question, String errorMessage, String regex, int max, int min) {
-	    int result;
-	    boolean isLooping = true;
-	    do {
-	      result = Integer.valueOf(validasiInput(question, errorMessage, regex));
-	      if (result >= min && result <= max) {
-	        isLooping = false;
-	      }else {
-	        System.out.println("Pilihan angka " + min + " s.d " + max);
-	      }
-	    } while (isLooping);
+		int result;
+		boolean isLooping = true;
+		do {
+			result = Integer.valueOf(validasiInput(question, errorMessage, regex));
+			if (result >= min && result <= max) {
+				isLooping = false;
+			} else {
+				System.out.println("Pilihan angka " + min + " s.d " + max);
+			}
+		} while (isLooping);
 
-	    return result;
-	  }
+		return result;
+	}
+
+	public static boolean validasiYesNo(String question) {
+        boolean isValid = true;
+        boolean isLooping = true;
+        do {
+            String response = validasiInput(question, "Pilihan tidak valid! (Harap masukkan Y atau T)", "^[YTyt]$");
+            char firstChar = response.toUpperCase().charAt(0);
+            if (firstChar == 'Y') {
+                isValid = true;
+                isLooping = false;
+            } else if (firstChar == 'T') {
+                isValid = false;
+                isLooping = false;
+            } else {
+                System.out.println("Pilihan tidak valid! (Harap masukkan Y atau T)");
+            }
+        } while (isLooping);
+
+        return isValid;
+    }
 }

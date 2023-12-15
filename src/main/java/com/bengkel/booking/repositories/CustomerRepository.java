@@ -32,7 +32,7 @@ public class CustomerRepository {
 		Motorcyle motorCust3 = new Motorcyle("Z231DHW", "Hitam", "Suzuki", "Manual", 2012, 135);		
 		List<Vehicle> listCust3Vechicle = Arrays.asList(carCust3, motorCust3);
 		
-		Customer cust3 = new MemberCustomer("Cust-003", "Rahmat", "Garut", "cust002", listCust3Vechicle, 2000000);
+		Customer cust3 = new MemberCustomer("Cust-003", "Rahmat", "Garut", "cust003", listCust3Vechicle, 2000000);
 		
 		listAllCustomer = Arrays.asList(cust1, cust2, cust3);
 		
